@@ -1,5 +1,6 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -9,17 +10,32 @@ export default function Home() {
                  bg-gradient-to-b from-gray-900 via-black to-gray-900 text-gray-100"
     >
       {/* Greeting */}
-      <p className="text-yellow-400 mb-3 tracking-widest text-sm md:text-base">
+      <motion.p
+        className="text-yellow-400 mb-3 tracking-widest text-sm md:text-base"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         HELLO!
-      </p>
+      </motion.p>
 
       {/* Name */}
-      <h1 className="text-4xl md:text-6xl font-extrabold mb-3">
+      <motion.h1
+        className="text-4xl md:text-6xl font-extrabold mb-3"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+      >
         I'm <span className="text-yellow-400">Laxman Kale</span>
-      </h1>
+      </motion.h1>
 
       {/* Typewriter Effect */}
-      <h2 className="text-lg md:text-2xl text-gray-300 mb-6">
+      <motion.h2
+        className="text-lg md:text-2xl text-gray-300 mb-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+      >
         <Typewriter
           options={{
             strings: [
@@ -32,10 +48,15 @@ export default function Home() {
             deleteSpeed: 40,
           }}
         />
-      </h2>
+      </motion.h2>
 
       {/* Buttons */}
-      <div className="flex gap-4 mt-4">
+      <motion.div
+        className="flex gap-4 mt-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.7 }}
+      >
         <a
           href="/Laxman_Kale_Resume_Updated.pdf"
           target="_blank"
@@ -51,7 +72,7 @@ export default function Home() {
         >
           My Works
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }
