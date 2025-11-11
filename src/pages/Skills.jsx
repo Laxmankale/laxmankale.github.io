@@ -3,38 +3,53 @@ import { motion } from "framer-motion";
 import {
   FaJava,
   FaReact,
-  FaNodeJs,
-  FaDatabase,
   FaGitAlt,
+  FaToolbox,
+  FaCogs,
+  FaCode,
 } from "react-icons/fa";
-import { SiSpringboot, SiMysql, SiPostman, SiTailwindcss } from "react-icons/si";
+import {
+  SiSpringboot,
+  SiHibernate,
+  SiPostman,
+  SiMysql,
+  SiTailwindcss,
+  SiEclipseide,
+} from "react-icons/si";
 
 export default function Skills() {
   const skills = [
     {
-      category: "Languages",
+      category: "Programming & Frameworks",
       items: [
         { name: "Java", icon: <FaJava className="text-red-500" /> },
-        { name: "JavaScript", icon: <FaNodeJs className="text-yellow-400" /> },
+        { name: "Spring Boot", icon: <SiSpringboot className="text-green-400" /> },
+        { name: "Hibernate / JPA", icon: <SiHibernate className="text-yellow-500" /> },
+        { name: "RESTful APIs", icon: <FaToolbox className="text-orange-400" /> },
       ],
     },
     {
-      category: "Frameworks",
+      category: "Frontend & Styling",
       items: [
-        { name: "Spring Boot", icon: <SiSpringboot className="text-green-400" /> },
         { name: "React.js", icon: <FaReact className="text-blue-400" /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
       ],
     },
     {
-      category: "Databases",
-      items: [{ name: "MySQL", icon: <SiMysql className="text-blue-300" /> }],
+      category: "Databases & Tools",
+      items: [
+        { name: "MySQL", icon: <SiMysql className="text-blue-300" /> },
+        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
+        { name: "Git", icon: <FaGitAlt className="text-orange-400" /> },
+        { name: "Maven", icon: <FaCogs className="text-yellow-400" /> },
+      ],
     },
     {
-      category: "Tools",
+      category: "IDEs & Environments",
       items: [
-        { name: "Git", icon: <FaGitAlt className="text-orange-400" /> },
-        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
+        { name: "VS Code", icon: <FaCode className="text-blue-400" /> }, // ✅ using reliable fallback
+        { name: "Eclipse / STS4", icon: <SiEclipseide className="text-purple-400" /> },
+        { name: "Cursor", icon: <FaToolbox className="text-yellow-300" /> },
       ],
     },
   ];
@@ -45,12 +60,12 @@ export default function Skills() {
       className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-black via-gray-900 to-black text-gray-100 py-20 px-6"
     >
       <motion.h2
-        className="text-3xl md:text-4xl font-bold mb-10 text-yellow-400"
+        className="text-3xl md:text-4xl font-bold mb-12 text-yellow-400"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        Skills & Tools
+        Technical Skills
       </motion.h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl">
