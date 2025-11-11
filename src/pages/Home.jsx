@@ -1,15 +1,15 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 export default function Home() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center items-center text-center px-6
+      className="min-h-screen flex flex-col justify-center items-center text-center px-6 
                  bg-gradient-to-b from-gray-900 via-black to-gray-900 text-gray-100"
     >
-      {/* Greeting */}
       <motion.p
         className="text-yellow-400 mb-3 tracking-widest text-sm md:text-base"
         initial={{ opacity: 0, y: -20 }}
@@ -19,7 +19,6 @@ export default function Home() {
         HELLO!
       </motion.p>
 
-      {/* Name */}
       <motion.h1
         className="text-4xl md:text-6xl font-extrabold mb-3"
         initial={{ opacity: 0, y: 30 }}
@@ -29,7 +28,6 @@ export default function Home() {
         I'm <span className="text-yellow-400">Laxman Kale</span>
       </motion.h1>
 
-      {/* Typewriter Effect */}
       <motion.h2
         className="text-lg md:text-2xl text-gray-300 mb-6"
         initial={{ opacity: 0 }}
@@ -50,15 +48,14 @@ export default function Home() {
         />
       </motion.h2>
 
-      {/* Buttons */}
       <motion.div
-        className="flex gap-4 mt-4"
+        className="flex flex-wrap justify-center gap-4 mt-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.7 }}
       >
         <a
-          href="/Laxman_Kale_Resume_Updated.pdf"
+          href="/Laxman_Kale.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 transition"
@@ -66,12 +63,25 @@ export default function Home() {
           View Resume
         </a>
 
-        <a
-          href="#projects"
-          className="px-6 py-3 border border-yellow-400 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition"
+        <Link
+          to="experience"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="px-6 py-3 border border-yellow-400 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition cursor-pointer"
+        >
+          Experience
+        </Link>
+
+        <Link
+          to="projects"
+          smooth={true}
+          duration={600}
+          offset={-80}
+          className="px-6 py-3 border border-yellow-400 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition cursor-pointer"
         >
           My Works
-        </a>
+        </Link>
       </motion.div>
     </section>
   );
