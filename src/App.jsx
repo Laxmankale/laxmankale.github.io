@@ -7,6 +7,7 @@ import Education from "./pages/Education";
 import Projects from "./pages/Projects";
 import Navbar from "./components/Navbar";
 import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Education />
       <Projects />
        <Contact />
+      <Footer />
     </div>
   );
 }
