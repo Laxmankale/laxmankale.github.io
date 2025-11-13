@@ -1,3 +1,4 @@
+
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
@@ -62,27 +63,8 @@ export default function Home() {
         >
           View Resume
         </a>
-
-        <Link
-          to="experience"
-          smooth={true}
-          duration={600}
-          offset={-80}
-          className="px-6 py-3 border border-yellow-400 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition cursor-pointer"
-        >
-          Experience
-        </Link>
-
-        <Link
-          to="projects"
-          smooth={true}
-          duration={600}
-          offset={-80}
-          className="px-6 py-3 border border-yellow-400 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition cursor-pointer"
-        >
-          My Works
-        </Link>
       </motion.div>
     </section>
   );
 }
+   
