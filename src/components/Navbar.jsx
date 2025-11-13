@@ -38,6 +38,11 @@ export default function Navbar() {
             </Link>
           </li>
 
+          <li className="cursor-pointer hover:text-yellow-400 transition">
+             <Link to="contact" smooth={true} duration={600} offset={-80}>
+              Contact
+             </Link>
+          </li>
         </ul>
       </div>
     </nav>
