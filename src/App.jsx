@@ -6,6 +6,7 @@ import Experience from "./pages/Experience";
 import Education from "./pages/Education";
 import Projects from "./pages/Projects";
 import Navbar from "./components/Navbar";
+import Contact from "./pages/Contact";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Experience />
       <Education />
       <Projects />
+       <Contact />
     </div>
   );
 }
