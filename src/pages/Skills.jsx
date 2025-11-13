@@ -4,6 +4,7 @@ import {
   FaJava,
   FaReact,
   FaGitAlt,
+  FaGithub,
   FaToolbox,
   FaCogs,
   FaCode,
@@ -13,7 +14,6 @@ import {
   SiHibernate,
   SiPostman,
   SiMysql,
-  SiTailwindcss,
   SiEclipseide,
 } from "react-icons/si";
 
@@ -24,30 +24,27 @@ export default function Skills() {
       items: [
         { name: "Java", icon: <FaJava className="text-red-500" /> },
         { name: "Spring Boot", icon: <SiSpringboot className="text-green-400" /> },
+        { name: "React.js", icon: <FaReact className="text-blue-400" /> },
         { name: "Hibernate / JPA", icon: <SiHibernate className="text-yellow-500" /> },
         { name: "RESTful APIs", icon: <FaToolbox className="text-orange-400" /> },
+        { name: "Microservices", icon: <FaCogs className="text-blue-400" /> },
       ],
     },
-    {
-      category: "Frontend & Styling",
-      items: [
-        { name: "React.js", icon: <FaReact className="text-blue-400" /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
-      ],
-    },
+    
     {
       category: "Databases & Tools",
       items: [
         { name: "MySQL", icon: <SiMysql className="text-blue-300" /> },
         { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
         { name: "Git", icon: <FaGitAlt className="text-orange-400" /> },
+        { name: "GitHub", icon: <FaGithub className="text-gray-300" /> },
         { name: "Maven", icon: <FaCogs className="text-yellow-400" /> },
       ],
     },
     {
       category: "IDEs & Environments",
       items: [
-        { name: "VS Code", icon: <FaCode className="text-blue-400" /> }, // ✅ using reliable fallback
+        { name: "VS Code", icon: <FaCode className="text-blue-400" /> },
         { name: "Eclipse / STS4", icon: <SiEclipseide className="text-purple-400" /> },
         { name: "Cursor", icon: <FaToolbox className="text-yellow-300" /> },
       ],
@@ -68,7 +65,7 @@ export default function Skills() {
         Technical Skills
       </motion.h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center max-w-7xl mx-auto">
         {skills.map((group, i) => (
           <motion.div
             key={i}
