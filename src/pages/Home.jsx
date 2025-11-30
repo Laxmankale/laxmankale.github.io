@@ -56,7 +56,7 @@ export default function Home() {
         transition={{ delay: 1.2, duration: 0.7 }}
       >
         <a
-          href="/Laxman_Kale.pdf"
+          href="/Laxman_Kale_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 transition"
@@ -67,4 +67,3 @@ export default function Home() {
     </section>
   );
 }
-   
