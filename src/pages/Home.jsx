@@ -3,6 +3,7 @@ import React from "react";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import resumePDF from "../assets/Laxman_Kale_Resume.pdf";
 
 export default function Home() {
   return (
@@ -56,7 +57,7 @@ export default function Home() {
         transition={{ delay: 1.2, duration: 0.7 }}
       >
         <a
-          href="/Laxman_Kale_Resume_v2.pdf"
+          href={resumePDF}
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 transition"
