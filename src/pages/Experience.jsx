@@ -29,41 +29,61 @@ export default function Experience() {
   ];
 
   return (
-    <section
-      id="experience"
-      className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-black via-gray-900 to-black text-gray-100 py-20 px-6"
-    >
+    <section id="experience" className="section-wrapper">
+      {/* Orb */}
+      <div className="orb w-80 h-80 bg-cyan-500 top-20 -right-20" />
+
       <motion.h2
-        className="text-3xl md:text-4xl font-bold mb-12 text-yellow-400 flex items-center gap-3"
+        className="section-heading flex items-center justify-center gap-3"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <FaBriefcase className="text-yellow-400" /> Experience
+        <FaBriefcase className="text-cyan-400" />
+        <span>
+          <span className="text-gradient">Experience</span>
+        </span>
       </motion.h2>
 
-      <div className="flex flex-col gap-10 max-w-4xl w-full">
-        {experiences.map((exp, index) => (
-          <motion.div
-            key={index}
-            className="bg-gray-800/60 border border-gray-700 rounded-xl p-6 shadow-md hover:shadow-yellow-400/20 transition"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2, duration: 0.7 }}
-          >
-            <h3 className="text-xl font-semibold text-yellow-300 mb-1">
-              {exp.role}
-            </h3>
-            <p className="text-gray-400 italic mb-2">
-              {exp.company} | <span className="text-yellow-400">{exp.duration}</span>
-            </p>
-            <ul className="list-disc list-inside text-gray-300 space-y-1">
-              {exp.details.map((point, i) => (
-                <li key={i}>{point}</li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
+      {/* Timeline */}
+      <div className="relative max-w-3xl mx-auto">
+        {/* Connector line */}
+        <div className="absolute left-4 md:left-5 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/40 via-violet-500/30 to-transparent" />
+
+        <div className="flex flex-col gap-10">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              className="relative pl-12 md:pl-14"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2, duration: 0.7 }}
+            >
+              {/* Timeline dot */}
+              <div className="absolute left-[10px] md:left-[14px] top-1 w-3 h-3 rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 ring-4 ring-slate-950" />
+
+              <div className="glass p-6 hover:border-cyan-400/30 transition-all duration-300">
+                <h3 className="font-outfit text-xl font-semibold text-slate-100 mb-1">
+                  {exp.role}
+                </h3>
+                <p className="text-slate-500 text-sm mb-3">
+                  {exp.company}{" "}
+                  <span className="text-cyan-400/80">· {exp.duration}</span>
+                </p>
+                <ul className="space-y-2 text-sm text-slate-400 leading-relaxed">
+                  {exp.details.map((point, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-cyan-400/60 mt-1 shrink-0">▹</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,63 +1,95 @@
 import React from "react";
-import { FaLinkedin, FaGithub, FaEnvelope, FaLocationArrow, FaPhone } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaLinkedin, FaGithub, FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
+
+const contactItems = [
+  {
+    icon: <FaMapMarkerAlt />,
+    label: "Location",
+    value: "Pune, India",
+    href: null,
+  },
+  {
+    icon: <FaPhone />,
+    label: "Phone",
+    value: "9579070069",
+    href: "tel:+919579070069",
+  },
+  {
+    icon: <FaEnvelope />,
+    label: "Email",
+    value: "lakhankale888@gmail.com",
+    href: "mailto:lakhankale888@gmail.com",
+  },
+  {
+    icon: <FaLinkedin />,
+    label: "LinkedIn",
+    value: "linkedin.com/in/laxmankale",
+    href: "https://www.linkedin.com/in/laxmankale",
+  },
+  {
+    icon: <FaGithub />,
+    label: "GitHub",
+    value: "github.com/Laxmankale",
+    href: "https://github.com/Laxmankale",
+  },
+];
 
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="py-20 px-6 bg-[#0b0b0b] text-gray-300 flex flex-col items-center"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-yellow-400 tracking-wide">
-        Contact Me
-      </h2>
+    <section id="contact" className="section-wrapper">
+      {/* Orb */}
+      <div className="orb w-72 h-72 bg-cyan-500 bottom-10 left-1/3" />
 
-      <div className="flex flex-wrap justify-center items-center gap-6 text-lg">
+      <motion.h2
+        className="section-heading"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        Get In <span className="text-gradient">Touch</span>
+      </motion.h2>
 
-        <div className="flex items-center gap-2">
-          <FaLocationArrow className="text-yellow-400" />
-          <span>Pune, India</span>
-        </div>
+      <p className="text-center text-slate-500 text-sm -mt-10 mb-14 max-w-md mx-auto">
+        Feel free to reach out — I'm always open to exciting opportunities and collaborations.
+      </p>
 
-        <span className="text-gray-600">|</span>
-        <div className="flex items-center gap-2">
-          <FaPhone className="text-yellow-400" />
-         <a
-         href="tel:+91 9579070069"
-          className="hover:text-yellow-400 transition"
-           >
-           9579070069
-         </a>
-         </div>
-        <span className="text-gray-600">|</span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        {contactItems.map((item, i) => {
+          const Wrapper = item.href ? "a" : "div";
+          const wrapperProps = item.href
+            ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
+            : {};
 
-        <div className="flex items-center gap-2">
-          <FaEnvelope className="text-yellow-400" />
-          <span
-           onClick={() => window.open("mailto:lakhankale888@gmail.com")}
-           className="hover:text-yellow-400 transition cursor-pointer"
-        >
-            lakhankale888@gmail.com
-        </span>
-
-        </div>
-
-        <span className="text-gray-600">|</span>
-
-        <a
-          href="https://www.linkedin.com/in/laxmankale"
-          target="_blank"
-          className="text-2xl hover:text-yellow-400 transition"
-        >
-          <FaLinkedin />
-        </a>
-
-        <a
-          href="https://github.com/Laxmankale"
-          target="_blank"
-          className="text-2xl hover:text-yellow-400 transition"
-        >
-          <FaGithub />
-        </a>
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+            >
+              <Wrapper
+                {...wrapperProps}
+                className="glass p-5 flex items-center gap-4 group
+                  hover:border-cyan-400/30 transition-all duration-300 block"
+              >
+                <span className="text-xl text-cyan-400 group-hover:scale-110 transition-transform shrink-0">
+                  {item.icon}
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[11px] uppercase tracking-widest text-slate-600 mb-0.5">
+                    {item.label}
+                  </p>
+                  <p className="text-sm text-slate-300 truncate group-hover:text-cyan-400 transition-colors">
+                    {item.value}
+                  </p>
+                </div>
+              </Wrapper>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

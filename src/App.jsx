@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="font-sans bg-gray-900 text-gray-100 min-h-screen">
+    <div className="font-inter bg-slate-950 text-slate-200 min-h-screen">
       <Navbar />
       <Hero />
       <About />
@@ -19,7 +19,7 @@ export default function App() {
       <Experience />
       <Education />
       <Projects />
-       <Contact />
+      <Contact />
       <Footer />
     </div>
   );

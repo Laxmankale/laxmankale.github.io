@@ -22,69 +22,80 @@ export default function Skills() {
     {
       category: "Programming & Frameworks",
       items: [
-        { name: "Java", icon: <FaJava className="text-red-500" /> },
-        { name: "Spring Boot", icon: <SiSpringboot className="text-green-400" /> },
-        { name: "React.js", icon: <FaReact className="text-blue-400" /> },
-        { name: "Hibernate / JPA", icon: <SiHibernate className="text-yellow-500" /> },
-        { name: "RESTful APIs", icon: <FaToolbox className="text-orange-400" /> },
-        { name: "Microservices", icon: <FaCogs className="text-blue-400" /> },
+        { name: "Java", icon: <FaJava /> },
+        { name: "Spring Boot", icon: <SiSpringboot /> },
+        { name: "React.js", icon: <FaReact /> },
+        { name: "Hibernate / JPA", icon: <SiHibernate /> },
+        { name: "RESTful APIs", icon: <FaToolbox /> },
+        { name: "Microservices", icon: <FaCogs /> },
       ],
     },
-    
     {
       category: "Databases & Tools",
       items: [
-        { name: "MySQL", icon: <SiMysql className="text-blue-300" /> },
-        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
-        { name: "Git", icon: <FaGitAlt className="text-orange-400" /> },
-        { name: "GitHub", icon: <FaGithub className="text-gray-300" /> },
-        { name: "Maven", icon: <FaCogs className="text-yellow-400" /> },
+        { name: "MySQL", icon: <SiMysql /> },
+        { name: "Postman", icon: <SiPostman /> },
+        { name: "Git", icon: <FaGitAlt /> },
+        { name: "GitHub", icon: <FaGithub /> },
+        { name: "Maven", icon: <FaCogs /> },
       ],
     },
     {
       category: "IDEs & Environments",
       items: [
-        { name: "VS Code", icon: <FaCode className="text-blue-400" /> },
-        { name: "Eclipse / STS4", icon: <SiEclipseide className="text-purple-400" /> },
-        { name: "Cursor", icon: <FaToolbox className="text-yellow-300" /> },
+        { name: "VS Code", icon: <FaCode /> },
+        { name: "Eclipse / STS4", icon: <SiEclipseide /> },
+        { name: "Cursor", icon: <FaToolbox /> },
       ],
     },
   ];
 
   return (
-    <section
-      id="skills"
-      className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-black via-gray-900 to-black text-gray-100 py-20 px-6"
-    >
+    <section id="skills" className="section-wrapper">
+      {/* Orbs */}
+      <div className="orb w-72 h-72 bg-cyan-500 -top-10 left-1/4" />
+      <div className="orb w-64 h-64 bg-violet-600 bottom-0 right-10" />
+
       <motion.h2
-        className="text-3xl md:text-4xl font-bold mb-12 text-yellow-400"
+        className="section-heading"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        Technical Skills
+        Technical <span className="text-gradient">Skills</span>
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center max-w-7xl mx-auto">
+      <p className="text-center text-slate-500 text-sm -mt-10 mb-14 max-w-xl mx-auto">
+        Technologies and tools I work with on a daily basis.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {skills.map((group, i) => (
           <motion.div
             key={i}
-            className="bg-gray-800/60 border border-gray-700 rounded-xl p-6 shadow-md hover:shadow-yellow-400/20 transition"
+            className="glass p-6 hover:border-cyan-400/30 transition-all duration-300"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2, duration: 0.7 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15, duration: 0.7 }}
           >
-            <h3 className="text-xl font-semibold mb-4 text-yellow-300">
+            <h3 className="font-outfit text-lg font-semibold mb-5 text-gradient">
               {group.category}
             </h3>
-            <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+            <div className="flex flex-wrap gap-3">
               {group.items.map((skill, j) => (
                 <div
                   key={j}
-                  className="flex flex-col items-center text-center w-20"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg
+                    bg-white/[0.04] border border-white/[0.06]
+                    hover:border-cyan-400/40 hover:shadow-[0_0_12px_rgba(34,211,238,0.15)]
+                    transition-all duration-300 text-sm text-slate-300 group"
                 >
-                  <div className="text-4xl mb-2">{skill.icon}</div>
-                  <p className="text-sm text-gray-300">{skill.name}</p>
+                  <span className="text-lg text-cyan-400 group-hover:scale-110 transition-transform">
+                    {skill.icon}
+                  </span>
+                  {skill.name}
                 </div>
               ))}
             </div>
