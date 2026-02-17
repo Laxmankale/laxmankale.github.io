@@ -18,7 +18,7 @@ export default function Experience() {
     {
       role: "Back-End Developer Intern",
       company: "Infosys Springboard (Remote)",
-      duration: "Oct 2025 – Present",
+      duration: "Oct 2025 – Dec 2025",
       details: [
         'Collaborated in a cross-functional team to design and develop "Hire A Helper" full-stack app using the MERN stack.',
         "Defined and implemented backend API specifications ensuring seamless frontend communication.",
