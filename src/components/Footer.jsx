@@ -19,7 +19,7 @@ export default function Footer() {
             <FaGithub />
           </a>
           <a
-            href="https://www.linkedin.com/in/laxmankale"
+            href="https://www.linkedin.com/in/lakhan-kale-29886123b/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-500 hover:text-cyan-400 transition-colors text-lg"

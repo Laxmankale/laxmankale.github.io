@@ -16,6 +16,18 @@ export default function Projects() {
       live: "#",
     },
     {
+      title: "Sweet Shop Management System – Inventory & Sales Platform",
+      description: [
+        "Built a full-stack inventory and sales management system enabling customers to search, view, and purchase sweets in real time. Followed Test-Driven Development (TDD) methodology throughout the project.",
+        "Developed secure REST APIs using Spring Boot for product management, stock tracking, and purchase workflows following layered architecture (Controller → Service → Repository). Applied DTO pattern with mapper layer to decouple entities from API response models.",
+        "Wrote unit tests for service and controller layer components using JUnit and Mockito. Tested REST APIs using Postman to validate request/response payloads and verify HTTP status codes.",
+        "Integrated React frontend with backend services to enable dynamic product search and purchase confirmation flows.",
+      ],
+      tech: ["Spring Boot", "React.js", "Tailwind CSS", "MySQL", "REST APIs", "JUnit", "Mockito"],
+      github: "https://github.com/Laxmankale/sweet-shop-management-system",
+      live: "#",
+    },
+    {
       title: "Portfolio Website",
       description: [
         "A personal portfolio website built using React, Vite, Tailwind CSS, and Framer Motion to create a fast, responsive, and visually polished UI.",

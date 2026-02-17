@@ -24,8 +24,8 @@ const contactItems = [
   {
     icon: <FaLinkedin />,
     label: "LinkedIn",
-    value: "linkedin.com/in/laxmankale",
-    href: "https://www.linkedin.com/in/laxmankale",
+    value: "linkedin.com/in/lakhan-kale",
+    href: "https://www.linkedin.com/in/lakhan-kale-29886123b/",
   },
   {
     icon: <FaGithub />,
