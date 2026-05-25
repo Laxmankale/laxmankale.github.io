@@ -70,9 +70,17 @@ export default function Contact() {
             >
               <Wrapper
                 {...wrapperProps}
-                className="surface-card group flex min-h-28 items-center gap-4 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md hover:shadow-slate-200/80"
+                className="surface-card group flex min-h-28 items-center gap-4 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md hover:shadow-blue-100/80"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-lg text-blue-700">
+                <span
+                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-lg ${
+                    i % 3 === 0
+                      ? "bg-blue-50 text-blue-700"
+                      : i % 3 === 1
+                        ? "bg-emerald-50 text-emerald-700"
+                        : "bg-amber-50 text-amber-700"
+                  }`}
+                >
                   {item.icon}
                 </span>
                 <div className="min-w-0">

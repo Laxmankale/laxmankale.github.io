@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCode, FaServer, FaUserGraduate } from "react-icons/fa";
+import { FaBriefcase, FaCode, FaServer } from "react-icons/fa";
 
 const highlights = [
-  { icon: <FaUserGraduate />, label: "MCA Graduate", detail: "Strong CS foundation" },
+  { icon: <FaBriefcase />, label: "Current Role", detail: "Java Developer at Zest India IT Services" },
   { icon: <FaServer />, label: "Backend Focused", detail: "Java and Spring Boot" },
-  { icon: <FaCode />, label: "Full-Stack Ready", detail: "React and REST integration" },
+  { icon: <FaCode />, label: "API Driven", detail: "REST APIs, Kafka, Docker, and databases" },
 ];
 
 export default function About() {
@@ -19,16 +19,16 @@ export default function About() {
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
-        Practical engineering with a focus on clean backend systems
+        Java Developer focused on backend engineering
       </motion.h2>
       <p className="section-subtitle">
-        I enjoy turning requirements into structured APIs, reliable data models, and user-facing
-        features that are easy to maintain.
+        I build backend services with a focus on clean API design, reliable data flow, and
+        maintainable application architecture.
       </p>
 
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
         <motion.div
-          className="surface-card p-6 md:p-8"
+          className="surface-card border-l-4 border-l-blue-600 p-6 md:p-8"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -39,17 +39,13 @@ export default function About() {
           </h3>
           <div className="space-y-5 text-base leading-8 text-slate-600">
             <p>
-              I'm <span className="font-semibold text-slate-950">Laxman Kale</span>, a backend
-              developer specializing in Java, Spring Boot, RESTful API design, and database-driven
-              applications.
+              I'm <span className="font-semibold text-slate-950">Laxman Kale</span>, a Java
+              Developer working on scalable REST APIs, microservices, database integration, and
+              enterprise backend workflows.
             </p>
             <p>
-              I work with Java, Spring Boot, Hibernate/JPA, REST APIs, MySQL, and React.js, with a
-              strong foundation in Core Java, OOP, MVC architecture, and database design.
-            </p>
-            <p>
-              My goal is to contribute to teams building efficient backend systems, reliable API
-              integrations, and scalable application features.
+              My core stack includes Java, Spring Boot, Hibernate/JPA, Kafka, Docker, MySQL,
+              PostgreSQL, and React.js for full-stack API integration.
             </p>
           </div>
         </motion.div>
@@ -58,13 +54,21 @@ export default function About() {
           {highlights.map((h, i) => (
             <motion.div
               key={h.label}
-              className="surface-card flex items-start gap-4 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md hover:shadow-slate-200/80"
+              className="surface-card flex items-start gap-4 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md hover:shadow-blue-100/80"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-lg text-blue-700">
+              <span
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-lg ${
+                  i === 0
+                    ? "bg-blue-50 text-blue-700"
+                    : i === 1
+                      ? "bg-emerald-50 text-emerald-700"
+                      : "bg-amber-50 text-amber-700"
+                }`}
+              >
                 {h.icon}
               </span>
               <div>

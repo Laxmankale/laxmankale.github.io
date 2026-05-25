@@ -57,14 +57,26 @@ export default function Projects() {
         {projects.map((project, index) => (
           <motion.article
             key={project.title}
-            className="surface-card flex h-full flex-col overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/80"
+            className="surface-card flex h-full flex-col overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/80"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.6 }}
           >
-            <div className="border-b border-slate-200 bg-slate-50 p-5">
-              <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-700 font-outfit text-sm font-bold text-white">
+            <div
+              className={`border-b p-5 ${
+                index === 0
+                  ? "border-blue-100 bg-blue-50"
+                  : index === 1
+                    ? "border-emerald-100 bg-emerald-50"
+                    : "border-amber-100 bg-amber-50"
+              }`}
+            >
+              <span
+                className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg font-outfit text-sm font-bold text-white ${
+                  index === 0 ? "bg-blue-700" : index === 1 ? "bg-emerald-700" : "bg-amber-600"
+                }`}
+              >
                 0{index + 1}
               </span>
               <h3 className="font-outfit text-xl font-semibold leading-7 text-slate-950">

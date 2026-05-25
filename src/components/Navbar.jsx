@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-scroll";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
 
 const links = [
   { to: "home", label: "Home" },
@@ -14,9 +14,25 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    const shouldUseDark = savedTheme === "dark";
+    setDarkMode(shouldUseDark);
+    document.documentElement.classList.toggle("dark", shouldUseDark);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = !darkMode;
+    setDarkMode(nextTheme);
+    document.documentElement.classList.toggle("dark", nextTheme);
+    localStorage.setItem("portfolio-theme", nextTheme ? "dark" : "light");
+  };
 
   return (
-    <nav className="fixed left-0 top-0 z-50 w-full border-b border-slate-200 bg-white/90 shadow-sm shadow-slate-200/50 backdrop-blur-xl">
+    <nav className="fixed left-0 top-0 z-50 w-full border-b border-blue-100 bg-white/90 shadow-sm shadow-blue-100/60 backdrop-blur-xl transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/90 dark:shadow-slate-950/60">
+      <div className="h-1 w-full accent-gradient" />
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           to="home"
@@ -24,7 +40,7 @@ export default function Navbar() {
           duration={600}
           className="cursor-pointer font-outfit text-xl font-bold tracking-tight text-slate-950"
         >
-          Laxman<span className="text-accent">.</span>
+          Portfolio<span className="text-gradient">.</span>
         </Link>
 
         <ul className="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
@@ -47,13 +63,25 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="text-xl text-slate-700 focus:outline-none md:hidden"
-          aria-label="Toggle menu"
-        >
-          {open ? <FaTimes /> : <FaBars />}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 transition-all duration-200 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:bg-slate-800"
+            aria-label={darkMode ? "Switch to light theme" : "Switch to dark theme"}
+            type="button"
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-xl text-slate-700 focus:outline-none md:hidden"
+            aria-label="Toggle menu"
+            type="button"
+          >
+            {open ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
 
       {open && (

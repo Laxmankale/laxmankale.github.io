@@ -39,13 +39,21 @@ export default function Education() {
         {education.map((edu, index) => (
           <motion.div
             key={edu.degree}
-            className="surface-card p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md hover:shadow-slate-200/80"
+            className={`surface-card p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${
+              index === 0
+                ? "border-l-4 border-l-blue-600 hover:border-blue-200 hover:shadow-blue-100/80"
+                : "border-l-4 border-l-emerald-600 hover:border-emerald-200 hover:shadow-emerald-100/80"
+            }`}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.12, duration: 0.6 }}
           >
-            <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-lg text-blue-700">
+            <span
+              className={`mb-5 flex h-11 w-11 items-center justify-center rounded-lg text-lg ${
+                index === 0 ? "bg-blue-50 text-blue-700" : "bg-emerald-50 text-emerald-700"
+              }`}
+            >
               <FaGraduationCap />
             </span>
             <h3 className="font-outfit text-xl font-semibold text-slate-950">{edu.degree}</h3>
