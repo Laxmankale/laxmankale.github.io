@@ -1,20 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  FaJava,
-  FaReact,
+  FaCode,
+  FaCogs,
   FaGitAlt,
   FaGithub,
+  FaJava,
+  FaReact,
   FaToolbox,
-  FaCogs,
-  FaCode,
 } from "react-icons/fa";
 import {
-  SiSpringboot,
-  SiHibernate,
-  SiPostman,
-  SiMysql,
   SiEclipseide,
+  SiHibernate,
+  SiMysql,
+  SiPostman,
+  SiSpringboot,
 } from "react-icons/si";
 
 export default function Skills() {
@@ -52,49 +52,41 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section-wrapper">
-      {/* Orbs */}
-      <div className="orb w-72 h-72 bg-cyan-500 -top-10 left-1/4" />
-      <div className="orb w-64 h-64 bg-violet-600 bottom-0 right-10" />
-
+      <p className="section-kicker">Skills</p>
       <motion.h2
         className="section-heading"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.7 }}
       >
-        Technical <span className="text-gradient">Skills</span>
+        Technologies organized for real project work
       </motion.h2>
-
-      <p className="text-center text-slate-500 text-sm -mt-10 mb-14 max-w-xl mx-auto">
-        Technologies and tools I work with on a daily basis.
+      <p className="section-subtitle">
+        A focused stack for backend development, API integration, database design, and practical
+        React interfaces.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
         {skills.map((group, i) => (
           <motion.div
-            key={i}
-            className="glass p-6 hover:border-cyan-400/30 transition-all duration-300"
-            initial={{ opacity: 0, y: 30 }}
+            key={group.category}
+            className="surface-card p-6"
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.7 }}
+            transition={{ delay: i * 0.1, duration: 0.6 }}
           >
-            <h3 className="font-outfit text-lg font-semibold mb-5 text-gradient">
+            <h3 className="mb-5 font-outfit text-lg font-semibold text-slate-950">
               {group.category}
             </h3>
             <div className="flex flex-wrap gap-3">
-              {group.items.map((skill, j) => (
+              {group.items.map((skill) => (
                 <div
-                  key={j}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg
-                    bg-white/[0.04] border border-white/[0.06]
-                    hover:border-cyan-400/40 hover:shadow-[0_0_12px_rgba(34,211,238,0.15)]
-                    transition-all duration-300 text-sm text-slate-300 group"
+                  key={skill.name}
+                  className="group flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 transition-all duration-200 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
                 >
-                  <span className="text-lg text-cyan-400 group-hover:scale-110 transition-transform">
-                    {skill.icon}
-                  </span>
+                  <span className="text-base text-blue-700">{skill.icon}</span>
                   {skill.name}
                 </div>
               ))}

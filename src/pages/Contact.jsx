@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
 const contactItems = [
   {
@@ -38,24 +38,22 @@ const contactItems = [
 export default function Contact() {
   return (
     <section id="contact" className="section-wrapper">
-      {/* Orb */}
-      <div className="orb w-72 h-72 bg-cyan-500 bottom-10 left-1/3" />
-
+      <p className="section-kicker">Contact</p>
       <motion.h2
         className="section-heading"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.7 }}
       >
-        Get In <span className="text-gradient">Touch</span>
+        Let&apos;s discuss an opportunity or project
       </motion.h2>
-
-      <p className="text-center text-slate-500 text-sm -mt-10 mb-14 max-w-md mx-auto">
-        Feel free to reach out — I'm always open to exciting opportunities and collaborations.
+      <p className="section-subtitle">
+        Reach out for backend development roles, full-stack project work, or collaboration around
+        Java and Spring Boot applications.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {contactItems.map((item, i) => {
           const Wrapper = item.href ? "a" : "div";
           const wrapperProps = item.href
@@ -64,25 +62,24 @@ export default function Contact() {
 
           return (
             <motion.div
-              key={i}
+              key={item.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
+              transition={{ delay: i * 0.08, duration: 0.55 }}
             >
               <Wrapper
                 {...wrapperProps}
-                className="glass p-5 flex items-center gap-4 group
-                  hover:border-cyan-400/30 transition-all duration-300 block"
+                className="surface-card group flex min-h-28 items-center gap-4 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md hover:shadow-slate-200/80"
               >
-                <span className="text-xl text-cyan-400 group-hover:scale-110 transition-transform shrink-0">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-lg text-blue-700">
                   {item.icon}
                 </span>
                 <div className="min-w-0">
-                  <p className="text-[11px] uppercase tracking-widest text-slate-600 mb-0.5">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
                     {item.label}
                   </p>
-                  <p className="text-sm text-slate-300 truncate group-hover:text-cyan-400 transition-colors">
+                  <p className="truncate text-sm font-semibold text-slate-800 transition-colors group-hover:text-blue-700">
                     {item.value}
                   </p>
                 </div>

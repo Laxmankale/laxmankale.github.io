@@ -2,6 +2,7 @@ import React from "react";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import { FaArrowRight, FaDownload, FaMapMarkerAlt } from "react-icons/fa";
 import resumePDF from "../assets/Laxman_Kale_Resume.pdf";
 import profileImg from "../assets/profile.jpg";
 
@@ -9,99 +10,97 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="section-wrapper min-h-screen flex flex-col justify-center items-center text-center"
+      className="relative flex min-h-screen items-center bg-slate-50 px-6 pt-28"
     >
-      {/* Background orbs */}
-      <div className="orb w-72 h-72 bg-cyan-500 top-20 -left-20" />
-      <div className="orb w-96 h-96 bg-violet-600 bottom-10 -right-32" />
-
-      {/* Profile photo */}
-      <motion.div
-        className="relative mb-8"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7 }}
-      >
-        <div className="w-36 h-36 md:w-44 md:h-44 rounded-full p-[3px] bg-gradient-to-br from-cyan-400 to-violet-500">
-          <img
-            src={profileImg}
-            alt="Laxman Kale"
-            className="w-full h-full rounded-full object-cover border-4 border-slate-950"
-          />
-        </div>
-      </motion.div>
-
-      {/* Greeting */}
-      <motion.p
-        className="text-cyan-400 mb-3 tracking-[0.25em] text-xs md:text-sm font-medium uppercase"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Hello, World!
-      </motion.p>
-
-      {/* Name */}
-      <motion.h1
-        className="font-outfit text-4xl md:text-6xl font-extrabold mb-4"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-      >
-        I'm{" "}
-        <span className="text-gradient">Laxman Kale</span>
-      </motion.h1>
-
-      {/* Typewriter */}
-      <motion.h2
-        className="text-lg md:text-2xl text-slate-400 mb-8 font-light"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-      >
-        <Typewriter
-          options={{
-            strings: [
-              "Backend Developer",
-              "Java | Spring Boot | REST APIs",
-              "Building Scalable Web Systems",
-            ],
-            autoStart: true,
-            loop: true,
-            deleteSpeed: 40,
-          }}
-        />
-      </motion.h2>
-
-      {/* CTAs */}
-      <motion.div
-        className="flex flex-wrap justify-center gap-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.7 }}
-      >
-        <a
-          href={resumePDF}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-7 py-3 rounded-full font-semibold text-sm
-            bg-gradient-to-r from-cyan-400 to-violet-500 text-white
-            hover:shadow-lg hover:shadow-cyan-400/25 transition-all duration-300"
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 pb-16 md:grid-cols-[1.08fr_0.92fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
         >
-          View Resume
-        </a>
-        <Link
-          to="contact"
-          smooth
-          duration={600}
-          offset={-80}
-          className="px-7 py-3 rounded-full font-semibold text-sm cursor-pointer
-            border border-white/[0.12] text-slate-300
-            hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300"
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" />
+            Open to backend developer opportunities
+          </div>
+
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-blue-700">
+            Java Backend Developer
+          </p>
+
+          <h1 className="max-w-4xl font-outfit text-4xl font-extrabold leading-tight tracking-tight text-slate-950 md:text-6xl">
+            Hi, I'm Laxman Kale. I build reliable backend systems and clean web experiences.
+          </h1>
+
+          <div className="mt-6 min-h-8 text-lg font-medium text-slate-600 md:text-xl">
+            <Typewriter
+              options={{
+                strings: [
+                  "Spring Boot REST APIs",
+                  "Java, Hibernate, MySQL",
+                  "Scalable full-stack applications",
+                ],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: 40,
+              }}
+            />
+          </div>
+
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
+            MCA graduate focused on building maintainable APIs, database-backed applications,
+            and practical full-stack features with Java, Spring Boot, React, and MySQL.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              to="projects"
+              smooth
+              duration={600}
+              offset={-80}
+              className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-sm shadow-blue-700/20 transition-all duration-200 hover:bg-blue-800 hover:-translate-y-0.5"
+            >
+              View Projects <FaArrowRight className="text-xs" />
+            </Link>
+            <a
+              href={resumePDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition-all duration-200 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+            >
+              <FaDownload className="text-xs" /> View Resume
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-500">
+            <span className="inline-flex items-center gap-2">
+              <FaMapMarkerAlt className="text-blue-700" /> Pune, India
+            </span>
+            <span>Java | Spring Boot | React</span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="relative mx-auto w-full max-w-md"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.15, duration: 0.7 }}
         >
-          Contact Me
-        </Link>
-      </motion.div>
+          <div className="absolute -left-5 top-10 hidden rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-200/70 md:block">
+            REST API design
+          </div>
+          <div className="absolute -right-5 bottom-12 hidden rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-200/70 md:block">
+            Clean architecture
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/70">
+            <img
+              src={profileImg}
+              alt="Laxman Kale"
+              className="aspect-[4/5] w-full rounded-xl object-cover"
+            />
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

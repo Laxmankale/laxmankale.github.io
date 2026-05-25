@@ -16,20 +16,18 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-slate-950/80 backdrop-blur-xl border-b border-white/[0.06] z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
+    <nav className="fixed left-0 top-0 z-50 w-full border-b border-slate-200 bg-white/90 shadow-sm shadow-slate-200/50 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           to="home"
           smooth
           duration={600}
-          className="font-outfit text-xl font-bold tracking-tight cursor-pointer"
+          className="cursor-pointer font-outfit text-xl font-bold tracking-tight text-slate-950"
         >
-          <span className="text-gradient">&lt;LK /&gt;</span>
+          Laxman<span className="text-accent">.</span>
         </Link>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
+        <ul className="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
           {links.map((l) => (
             <li key={l.to}>
               <Link
@@ -38,11 +36,10 @@ export default function Navbar() {
                 duration={600}
                 offset={-80}
                 spy
-                activeClass="!text-cyan-400"
-                className="cursor-pointer hover:text-cyan-400 transition-colors duration-200 relative
-                  after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0
-                  after:bg-gradient-to-r after:from-cyan-400 after:to-violet-500
-                  after:transition-all after:duration-300 hover:after:w-full"
+                activeClass="!text-blue-700"
+                className="relative cursor-pointer transition-colors duration-200 hover:text-blue-700
+                  after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0
+                  after:bg-blue-700 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {l.label}
               </Link>
@@ -50,19 +47,17 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-slate-300 text-xl focus:outline-none"
+          className="text-xl text-slate-700 focus:outline-none md:hidden"
           aria-label="Toggle menu"
         >
           {open ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <ul className="md:hidden flex flex-col gap-4 px-6 pb-6 text-slate-400 text-sm font-medium bg-slate-950/95 backdrop-blur-xl border-t border-white/[0.06]">
+        <ul className="flex flex-col gap-3 border-t border-slate-200 bg-white px-6 pb-6 text-sm font-medium text-slate-600 md:hidden">
           {links.map((l) => (
             <li key={l.to}>
               <Link
@@ -71,7 +66,7 @@ export default function Navbar() {
                 duration={600}
                 offset={-80}
                 onClick={() => setOpen(false)}
-                className="block py-2 hover:text-cyan-400 transition-colors cursor-pointer"
+                className="block cursor-pointer py-2 transition-colors hover:text-blue-700"
               >
                 {l.label}
               </Link>

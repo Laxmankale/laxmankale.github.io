@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Base resets ───────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
@@ -13,44 +12,48 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f8fafc;
 }
 
-/* ── Reusable utilities ───────────────────────────── */
 @layer utilities {
-  /* Gradient accent text */
-  .text-gradient {
-    @apply bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent;
+  .text-accent {
+    @apply text-blue-700;
   }
 
-  /* Glass card */
-  .glass {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl;
+  .surface-card {
+    @apply rounded-lg border border-slate-200 bg-white shadow-sm shadow-slate-200/60;
   }
 
-  /* Radial glow orb — place behind content via absolute positioning */
-  .orb {
-    @apply absolute rounded-full blur-3xl opacity-20 pointer-events-none;
-  }
-
-  /* Section wrapper */
   .section-wrapper {
-    @apply relative overflow-hidden bg-slate-950 py-24 px-6;
+    @apply relative overflow-hidden bg-slate-50 px-6 py-20 md:py-24;
   }
 
-  /* Section heading */
+  .section-muted {
+    @apply bg-white;
+  }
+
+  .section-kicker {
+    @apply mb-3 text-center text-sm font-medium uppercase tracking-[0.18em] text-blue-700;
+  }
+
   .section-heading {
-    @apply font-outfit text-3xl md:text-4xl font-bold tracking-tight text-center mb-14;
+    @apply mb-4 text-center font-outfit text-3xl font-bold tracking-tight text-slate-950 md:text-4xl;
+  }
+
+  .section-subtitle {
+    @apply mx-auto mb-12 max-w-2xl text-center text-base leading-7 text-slate-600;
   }
 }
 
-/* ── Scrollbar styling ────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #f1f5f9;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #22d3ee, #8b5cf6);
+  background: #94a3b8;
   border-radius: 999px;
 }
