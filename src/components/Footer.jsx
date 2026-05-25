@@ -1,20 +1,22 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-slate-950 border-t border-white/[0.06] pt-10 pb-8 px-6">
-      {/* Gradient accent bar */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-[2px] bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full" />
+    <footer className="border-t border-blue-100 bg-white px-6 py-8">
+      <div className="mx-auto mb-8 h-1 w-28 rounded-full accent-gradient" />
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
+        <p className="text-sm text-slate-500">
+          © {new Date().getFullYear()} Laxman Kale. Built with React and Tailwind CSS.
+        </p>
 
-      <div className="max-w-5xl mx-auto flex flex-col items-center gap-5">
-        {/* Social row */}
-        <div className="flex gap-5">
+        <div className="flex gap-4">
           <a
             href="https://github.com/Laxmankale"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 hover:text-cyan-400 transition-colors text-lg"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+            aria-label="GitHub"
           >
             <FaGithub />
           </a>
@@ -22,21 +24,19 @@ export default function Footer() {
             href="https://www.linkedin.com/in/lakhan-kale-29886123b/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 hover:text-cyan-400 transition-colors text-lg"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+            aria-label="LinkedIn"
           >
             <FaLinkedin />
           </a>
           <a
             href="mailto:lakhankale888@gmail.com"
-            className="text-slate-500 hover:text-cyan-400 transition-colors text-lg"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+            aria-label="Email"
           >
             <FaEnvelope />
           </a>
         </div>
-
-        <p className="text-slate-500 text-sm text-center">
-          © {new Date().getFullYear()} Laxman Kale · Built with React & Tailwind CSS
-        </p>
       </div>
     </footer>
   );
