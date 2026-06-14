@@ -42,14 +42,22 @@ export default function Experience() {
     },
   ];
 
-  const colorStyles = [
-    "border-blue-100 bg-blue-50 text-blue-700",
-    "border-emerald-100 bg-emerald-50 text-emerald-700",
-    "border-amber-100 bg-amber-50 text-amber-700",
+  const dotColors = [
+    "bg-blue-600 shadow-blue-400/50",
+    "bg-emerald-600 shadow-emerald-400/50",
+    "bg-amber-500 shadow-amber-400/50",
+  ];
+
+  const badgeColors = [
+    "border-blue-200/80 bg-blue-50/80 text-blue-700 dark:border-blue-800/50 dark:bg-blue-950/40 dark:text-blue-300",
+    "border-emerald-200/80 bg-emerald-50/80 text-emerald-700 dark:border-emerald-800/50 dark:bg-emerald-950/40 dark:text-emerald-300",
+    "border-amber-200/80 bg-amber-50/80 text-amber-700 dark:border-amber-800/50 dark:bg-amber-950/40 dark:text-amber-300",
   ];
 
   return (
-    <section id="experience" className="section-wrapper section-muted">
+    <section id="experience" className="section-wrapper section-muted relative">
+      <div className="orb orb-emerald absolute -right-10 top-40 h-48 w-48" style={{ animationDelay: "1s" }} />
+
       <p className="section-kicker">Experience</p>
       <motion.h2
         className="section-heading"
@@ -65,10 +73,10 @@ export default function Experience() {
         database integration, and Agile delivery workflows.
       </p>
 
-      <div className="relative mx-auto max-w-4xl">
-        <div className="absolute bottom-0 left-5 top-0 w-px bg-gradient-to-b from-blue-300 via-emerald-300 to-amber-200" />
+      <div className="relative z-10 mx-auto max-w-4xl">
+        <div className="absolute bottom-0 left-5 top-0 w-px bg-gradient-to-b from-blue-400 via-emerald-400 to-amber-300 dark:from-blue-600 dark:via-emerald-600 dark:to-amber-500" />
 
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-10">
           {experiences.map((exp, index) => (
             <motion.div
               key={`${exp.company}-${index}`}
@@ -76,34 +84,36 @@ export default function Experience() {
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.12, duration: 0.6 }}
+              transition={{ delay: index * 0.15, duration: 0.6 }}
             >
               <div
-                className={`absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full border ring-8 ring-white ${colorStyles[index]}`}
+                className={`absolute left-[12px] top-2 h-6 w-6 rounded-full shadow-lg ${dotColors[index]} flex items-center justify-center ring-4 ring-white dark:ring-slate-950`}
               >
-                <FaBriefcase />
+                <FaBriefcase className="text-[8px] text-white" />
               </div>
 
-              <div className="surface-card p-6 transition-all duration-200 hover:border-blue-200 hover:shadow-md hover:shadow-blue-100/70">
-                <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <h3 className="font-outfit text-xl font-semibold text-slate-950">
-                      {exp.role}
-                    </h3>
-                    <p className="mt-1 text-sm font-medium text-slate-600">{exp.company}</p>
+              <div className="glass-card overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-100/30 dark:hover:shadow-blue-950/20">
+                <div className="p-6">
+                  <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <h3 className="font-outfit text-xl font-semibold text-slate-900 dark:text-white">
+                        {exp.role}
+                      </h3>
+                      <p className="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">{exp.company}</p>
+                    </div>
+                    <span className={`w-fit rounded-full border px-3.5 py-1.5 text-xs font-semibold ${badgeColors[index]}`}>
+                      {exp.duration}
+                    </span>
                   </div>
-                  <span className="w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
-                    {exp.duration}
-                  </span>
+                  <ul className="space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                    {exp.details.map((point) => (
+                      <li key={point} className="flex gap-3">
+                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-3 text-sm leading-6 text-slate-600">
-                  {exp.details.map((point) => (
-                    <li key={point} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </motion.div>
           ))}
