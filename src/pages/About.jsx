@@ -17,34 +17,40 @@ export default function About() {
       <p className="section-kicker">About</p>
       <motion.h2
         className="section-heading"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         Java Developer focused on backend engineering
       </motion.h2>
-      <p className="section-subtitle">
+      <motion.p
+        className="section-subtitle"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+      >
         I build backend services with a focus on clean API design, reliable data flow, and
         maintainable application architecture.
-      </p>
+      </motion.p>
 
       <div className="relative z-10 mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
         <motion.div
-          className="glass-card overflow-hidden p-0"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          className="surface-card overflow-hidden p-0"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="h-1.5 w-full accent-gradient" />
-          <div className="p-6 md:p-8">
-            <h3 className="mb-4 font-outfit text-2xl font-bold text-slate-900 dark:text-white">
+          <div className="h-2 w-full accent-gradient" />
+          <div className="p-8 md:p-10">
+            <h3 className="mb-6 font-outfit text-3xl font-bold text-slate-900 dark:text-white">
               Profile Summary
             </h3>
-            <div className="space-y-5 text-base leading-8 text-slate-600 dark:text-slate-300">
+            <div className="space-y-6 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
               <p>
-                I'm <span className="font-semibold text-slate-900 dark:text-white">Laxman Kale</span>, a Java
+                I'm <span className="font-semibold text-indigo-600 dark:text-indigo-400">Laxman Kale</span>, a Java
                 Developer working on scalable REST APIs, microservices, database integration, and
                 enterprise backend workflows.
               </p>
@@ -56,30 +62,30 @@ export default function About() {
           </div>
         </motion.div>
 
-        <div className="grid gap-4">
+        <div className="grid gap-5">
           {highlights.map((h, i) => (
             <motion.div
               key={h.label}
-              className="glass-card group flex items-start gap-4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-100/40 dark:hover:shadow-blue-950/20"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="surface-card group flex items-start gap-5 p-6"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: i * 0.15, duration: 0.7, ease: "easeOut" }}
             >
               <span
-                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-lg transition-all duration-300 group-hover:scale-110 ${
+                className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-sm ${
                   i === 0
-                    ? "bg-blue-100/80 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400"
+                    ? "bg-indigo-100/80 text-indigo-600 dark:bg-indigo-900/40 dark:text-indigo-400 group-hover:shadow-indigo-200/50"
                     : i === 1
-                      ? "bg-emerald-100/80 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-400"
-                      : "bg-amber-100/80 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400"
+                      ? "bg-purple-100/80 text-purple-600 dark:bg-purple-900/40 dark:text-purple-400 group-hover:shadow-purple-200/50"
+                      : "bg-pink-100/80 text-pink-600 dark:bg-pink-900/40 dark:text-pink-400 group-hover:shadow-pink-200/50"
                 }`}
               >
                 {h.icon}
               </span>
               <div>
-                <h4 className="font-outfit text-lg font-semibold text-slate-900 dark:text-white">{h.label}</h4>
-                <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">{h.detail}</p>
+                <h4 className="font-outfit text-xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{h.label}</h4>
+                <p className="mt-2 text-base leading-relaxed text-slate-500 dark:text-slate-400">{h.detail}</p>
               </div>
             </motion.div>
           ))}

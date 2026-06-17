@@ -40,96 +40,102 @@ export default function Projects() {
   ];
 
   const cardGradients = [
-    "from-blue-600 via-cyan-500 to-blue-700",
-    "from-emerald-600 via-teal-500 to-emerald-700",
-    "from-amber-500 via-orange-500 to-amber-600",
+    "from-indigo-600 via-purple-500 to-indigo-700",
+    "from-purple-600 via-fuchsia-500 to-purple-700",
+    "from-pink-500 via-rose-500 to-pink-600",
   ];
 
   const headerBgs = [
-    "from-blue-600/10 to-cyan-500/5 dark:from-blue-900/30 dark:to-cyan-900/10",
-    "from-emerald-600/10 to-teal-500/5 dark:from-emerald-900/30 dark:to-teal-900/10",
-    "from-amber-500/10 to-orange-500/5 dark:from-amber-900/30 dark:to-orange-900/10",
+    "from-indigo-600/10 to-purple-500/5 dark:from-indigo-900/30 dark:to-purple-900/10",
+    "from-purple-600/10 to-fuchsia-500/5 dark:from-purple-900/30 dark:to-fuchsia-900/10",
+    "from-pink-500/10 to-rose-500/5 dark:from-pink-900/30 dark:to-rose-900/10",
   ];
 
   const numberColors = [
-    "bg-blue-600 shadow-blue-400/40",
-    "bg-emerald-600 shadow-emerald-400/40",
-    "bg-amber-500 shadow-amber-400/40",
+    "bg-indigo-600 shadow-indigo-400/40",
+    "bg-purple-600 shadow-purple-400/40",
+    "bg-pink-500 shadow-pink-400/40",
   ];
 
   return (
     <section id="projects" className="section-wrapper section-muted relative">
-      <div className="orb orb-cyan absolute -right-20 top-40 h-56 w-56" style={{ animationDelay: "0s" }} />
-      <div className="orb orb-emerald absolute left-10 bottom-20 h-40 w-40" style={{ animationDelay: "3s" }} />
+      <div className="orb orb-cyan absolute -right-20 top-40 h-56 w-56" style={{ animationDelay: "0s", background: "radial-gradient(circle, rgba(236,72,153,0.3) 0%, rgba(236,72,153,0) 70%)" }} />
+      <div className="orb orb-emerald absolute left-10 bottom-20 h-40 w-40" style={{ animationDelay: "3s", background: "radial-gradient(circle, rgba(168,85,247,0.3) 0%, rgba(168,85,247,0) 70%)" }} />
 
       <p className="section-kicker">Projects</p>
       <motion.h2
         className="section-heading"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         Selected work with clear technical outcomes
       </motion.h2>
-      <p className="section-subtitle">
+      <motion.p
+        className="section-subtitle"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+      >
         Project cards emphasize what was built, the engineering decisions involved, and the stack
         used to deliver each application.
-      </p>
+      </motion.p>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-3">
         {projects.map((project, index) => (
           <motion.article
             key={project.title}
-            className="glass-card group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-100/40 dark:hover:shadow-blue-950/30"
-            initial={{ opacity: 0, y: 24 }}
+            className="surface-card group flex h-full flex-col overflow-hidden"
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.6 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: index * 0.15, duration: 0.7, ease: "easeOut" }}
           >
-            <div className={`h-1.5 w-full bg-gradient-to-r ${cardGradients[index]}`} />
+            <div className={`h-2 w-full bg-gradient-to-r ${cardGradients[index]}`} />
 
-            <div className={`relative border-b border-slate-200/40 bg-gradient-to-br p-5 dark:border-slate-700/30 ${headerBgs[index]}`}>
+            <div className={`relative border-b border-slate-200/40 bg-gradient-to-br p-6 dark:border-slate-700/30 ${headerBgs[index]}`}>
               <div className="flex items-start justify-between">
                 <span
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl font-outfit text-sm font-bold text-white shadow-lg ${numberColors[index]}`}
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl font-outfit text-base font-bold text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 ${numberColors[index]}`}
                 >
                   0{index + 1}
                 </span>
                 {project.featured && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-200/80 bg-amber-50/80 px-3 py-1 text-xs font-semibold text-amber-700 dark:border-amber-700/50 dark:bg-amber-950/40 dark:text-amber-300">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200/80 bg-indigo-50/80 px-3 py-1.5 text-xs font-bold text-indigo-700 dark:border-indigo-700/50 dark:bg-indigo-950/40 dark:text-indigo-300 shadow-sm shadow-indigo-100/50 dark:shadow-none">
                     <FaStar className="text-[10px]" /> Featured
                   </span>
                 )}
               </div>
-              <h3 className="mt-4 font-outfit text-xl font-semibold leading-7 text-slate-900 dark:text-white">
+              <h3 className="mt-5 font-outfit text-2xl font-bold leading-tight text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                 {project.title}
               </h3>
             </div>
 
-            <div className="flex flex-1 flex-col p-6">
-              <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">{project.description}</p>
-              <p className="mt-4 text-sm leading-7 text-slate-500 dark:text-slate-400">{project.detail}</p>
+            <div className="flex flex-1 flex-col p-6 md:p-8">
+              <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">{project.description}</p>
+              <p className="mt-4 text-sm leading-relaxed text-slate-500 dark:text-slate-400">{project.detail}</p>
 
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-8 flex flex-wrap gap-2.5">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-600 backdrop-blur-sm transition-all duration-200 hover:border-blue-200 hover:text-blue-600 dark:border-slate-700/50 dark:bg-slate-800/50 dark:text-slate-300 dark:hover:border-blue-600/50 dark:hover:text-blue-400"
+                    className="rounded-lg border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-600 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700/50 dark:bg-slate-800/50 dark:text-slate-300 dark:hover:border-indigo-600/50 dark:hover:text-indigo-400"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-auto flex gap-5 pt-7 text-sm font-semibold">
+              <div className="mt-auto flex gap-6 pt-8 text-sm font-bold uppercase tracking-wider">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-slate-600 transition-all duration-200 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
+                  className="group/link inline-flex items-center gap-2 text-slate-500 transition-all duration-300 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400"
                 >
-                  <FaGithub /> Code
+                  <FaGithub className="text-lg transition-transform duration-300 group-hover/link:scale-110" /> Code
                 </a>
 
                 {project.live !== "#" && (
@@ -137,9 +143,9 @@ export default function Projects() {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-slate-600 transition-all duration-200 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
+                    className="group/link inline-flex items-center gap-2 text-slate-500 transition-all duration-300 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400"
                   >
-                    <FaExternalLinkAlt /> Live
+                    <FaExternalLinkAlt className="text-lg transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" /> Live
                   </a>
                 )}
               </div>
