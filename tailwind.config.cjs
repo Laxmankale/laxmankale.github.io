@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ['"Inter"', 'sans-serif'],
-        outfit: ['"Outfit"', 'sans-serif'],
+        inter: ['"Manrope"', 'sans-serif'],
+        outfit: ['"Manrope"', 'sans-serif'],
       },
     },
   },

@@ -3,12 +3,9 @@ import { Link } from "react-scroll";
 import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
 
 const links = [
-  { to: "home", label: "Home" },
+  { to: "projects", label: "Work" },
   { to: "about", label: "About" },
-  { to: "skills", label: "Skills" },
   { to: "experience", label: "Experience" },
-  { to: "education", label: "Education" },
-  { to: "projects", label: "Projects" },
   { to: "contact", label: "Contact" },
 ];
 
@@ -31,51 +28,59 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed left-0 top-0 z-50 w-full border-b border-blue-100 bg-white/90 shadow-sm shadow-blue-100/60 backdrop-blur-xl transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/90 dark:shadow-slate-950/60">
-      <div className="h-1 w-full accent-gradient" />
+    <nav className="editorial-nav fixed left-0 top-0 z-50 w-full backdrop-blur-xl transition-colors duration-300">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           to="home"
           smooth
           duration={600}
-          className="cursor-pointer font-outfit text-xl font-bold tracking-tight text-slate-950"
+          className="flex cursor-pointer items-center gap-3 text-stone-950 dark:text-stone-50"
         >
-          Portfolio<span className="text-gradient">.</span>
+          <span className="editorial-monogram">L</span>
+          <span className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.12em]">
+            Laxman Kale / Portfolio
+          </span>
         </Link>
 
-        <ul className="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
-          {links.map((l) => (
-            <li key={l.to}>
+        <ul className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <li key={link.to}>
               <Link
-                to={l.to}
+                to={link.to}
                 smooth
                 duration={600}
-                offset={-80}
+                offset={-76}
                 spy
-                activeClass="!text-blue-700"
-                className="relative cursor-pointer transition-colors duration-200 hover:text-blue-700
-                  after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0
-                  after:bg-blue-700 after:transition-all after:duration-300 hover:after:w-full"
+                activeClass="active"
+                className="editorial-nav-link cursor-pointer"
               >
-                {l.label}
+                {link.label}
               </Link>
             </li>
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
+          <Link
+            to="contact"
+            smooth
+            duration={600}
+            offset={-76}
+            className="hidden cursor-pointer editorial-availability sm:inline-flex"
+          >
+            Open to opportunities
+          </Link>
           <button
             onClick={toggleTheme}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 transition-all duration-200 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:bg-slate-800"
+            className="flex h-9 w-9 items-center justify-center border border-stone-300 text-sm text-stone-800 transition-colors hover:bg-lime-200 dark:border-stone-600 dark:text-stone-100 dark:hover:bg-lime-300 dark:hover:text-stone-950"
             aria-label={darkMode ? "Switch to light theme" : "Switch to dark theme"}
             type="button"
           >
             {darkMode ? <FaSun /> : <FaMoon />}
           </button>
-
           <button
             onClick={() => setOpen(!open)}
-            className="text-xl text-slate-700 focus:outline-none md:hidden"
+            className="text-xl text-stone-900 focus:outline-none dark:text-stone-100 md:hidden"
             aria-label="Toggle menu"
             type="button"
           >
@@ -85,18 +90,18 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <ul className="flex flex-col gap-3 border-t border-slate-200 bg-white px-6 pb-6 text-sm font-medium text-slate-600 md:hidden">
-          {links.map((l) => (
-            <li key={l.to}>
+        <ul className="border-t border-stone-300 bg-[#f2f0e9] px-6 py-5 dark:border-stone-700 dark:bg-[#171715] md:hidden">
+          {links.map((link) => (
+            <li key={link.to}>
               <Link
-                to={l.to}
+                to={link.to}
                 smooth
                 duration={600}
-                offset={-80}
+                offset={-76}
                 onClick={() => setOpen(false)}
-                className="block cursor-pointer py-2 transition-colors hover:text-blue-700"
+                className="editorial-nav-link block cursor-pointer py-3"
               >
-                {l.label}
+                {link.label}
               </Link>
             </li>
           ))}

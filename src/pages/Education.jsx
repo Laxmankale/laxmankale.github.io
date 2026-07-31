@@ -1,90 +1,81 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaGraduationCap, FaCalendarAlt, FaTrophy } from "react-icons/fa";
+
+const education = [
+  {
+    degree: "Master of Computer Applications",
+    abbreviation: "MCA",
+    college: "Genba Sopanrao Moze College of Engineering, Pune",
+    duration: "2023 - 2025",
+    score: "CGPA 7.35 / 10",
+  },
+  {
+    degree: "Bachelor of Computer Science",
+    abbreviation: "BCS",
+    college: "Balbhim Arts, Science and Commerce College, Beed",
+    duration: "2019 - 2022",
+    score: "76.70%",
+  },
+];
 
 export default function Education() {
-  const education = [
-    {
-      degree: "Master of Computer Applications (MCA)",
-      college: "Genba Sopanrao Moze College of Engineering, Pune",
-      duration: "2023 - 2025",
-      score: "CGPA: 7.35 / 10",
-      color: "blue",
-    },
-    {
-      degree: "Bachelor of Computer Science (BCS)",
-      college: "Balbhim Arts, Science & Commerce College, Beed",
-      duration: "2019 - 2022",
-      score: "Percentage: 76.70%",
-      color: "emerald",
-    },
-  ];
-
-  const accentMap = {
-    blue: {
-      gradient: "from-blue-600 to-cyan-500",
-      iconBg: "bg-blue-100/80 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400",
-      scoreBg: "border-blue-200/80 bg-blue-50/80 text-blue-700 dark:border-blue-800/50 dark:bg-blue-950/40 dark:text-blue-300",
-    },
-    emerald: {
-      gradient: "from-emerald-600 to-teal-500",
-      iconBg: "bg-emerald-100/80 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-400",
-      scoreBg: "border-emerald-200/80 bg-emerald-50/80 text-emerald-700 dark:border-emerald-800/50 dark:bg-emerald-950/40 dark:text-emerald-300",
-    },
-  };
-
   return (
     <section id="education" className="section-wrapper relative">
-      <div className="orb orb-blue absolute -left-16 top-32 h-44 w-44" style={{ animationDelay: "2s" }} />
-
       <p className="section-kicker">Education</p>
       <motion.h2
         className="section-heading"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.65 }}
       >
-        Academic foundation
+        A foundation built for continuous learning.
       </motion.h2>
       <p className="section-subtitle">
-        Formal computer science education supporting backend development, software design, and
-        database fundamentals.
+        Academic training in computer science, software design, and database fundamentals that supports
+        the work I do today.
       </p>
 
-      <div className="relative z-10 mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
-        {education.map((edu, index) => {
-          const accent = accentMap[edu.color];
-          return (
-            <motion.div
-              key={edu.degree}
-              className="glass-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-100/30 dark:hover:shadow-blue-950/20"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.12, duration: 0.6 }}
-            >
-              <div className={`h-1.5 w-full bg-gradient-to-r ${accent.gradient}`} />
-              <div className="p-6">
-                <span className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-lg ${accent.iconBg}`}>
-                  <FaGraduationCap />
-                </span>
-                <h3 className="font-outfit text-xl font-semibold text-slate-900 dark:text-white">{edu.degree}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">{edu.college}</p>
-                <div className="mt-5 flex flex-wrap gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-600 dark:border-slate-700/50 dark:bg-slate-800/50 dark:text-slate-300">
-                    <FaCalendarAlt className="text-[10px]" />
-                    {edu.duration}
-                  </span>
-                  <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold ${accent.scoreBg}`}>
-                    <FaTrophy className="text-[10px]" />
-                    {edu.score}
-                  </span>
+      <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
+        {education.map((item, index) => (
+          <motion.article
+            key={item.degree}
+            className="education-card"
+            initial={{ opacity: 0, y: 36, rotateX: 8 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            whileHover={{ y: -8 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: index * 0.12, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            style={{ transformPerspective: 1000 }}
+          >
+            <motion.span
+              className="education-orbit"
+              aria-hidden="true"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 18 + index * 4, ease: "linear", repeat: Infinity }}
+            />
+            <div className="education-card-content">
+              <div className="flex items-start justify-between gap-5">
+                <span className="education-number">0{index + 1}</span>
+                <span className="education-abbreviation">{item.abbreviation}</span>
+              </div>
+              <h3 className="mt-12 max-w-md text-3xl font-semibold tracking-[-0.06em] text-stone-950 dark:text-stone-50">
+                {item.degree}
+              </h3>
+              <p className="mt-4 max-w-md text-sm leading-7 text-stone-600 dark:text-stone-400">{item.college}</p>
+              <div className="education-meta mt-10">
+                <div>
+                  <span>Period</span>
+                  <strong>{item.duration}</strong>
+                </div>
+                <div>
+                  <span>Result</span>
+                  <strong>{item.score}</strong>
                 </div>
               </div>
-            </motion.div>
-          );
-        })}
+            </div>
+          </motion.article>
+        ))}
       </div>
     </section>
   );
