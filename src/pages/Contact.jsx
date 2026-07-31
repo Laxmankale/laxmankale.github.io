@@ -41,9 +41,9 @@ const contactItems = [
 ];
 
 const colorMap = {
-  blue: "bg-blue-100/80 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400",
-  emerald: "bg-emerald-100/80 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-400",
-  amber: "bg-amber-100/80 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400",
+  blue: "bg-lime-200 text-stone-900 dark:bg-lime-300 dark:text-stone-950",
+  emerald: "bg-stone-200 text-stone-900 dark:bg-stone-700 dark:text-stone-100",
+  amber: "bg-stone-200 text-stone-900 dark:bg-stone-700 dark:text-stone-100",
 };
 
 export default function Contact() {
@@ -147,7 +147,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={sending}
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl accent-gradient px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/30 disabled:opacity-60"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl accent-gradient px-6 py-3.5 text-sm font-semibold text-stone-900 shadow-none transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/30 disabled:opacity-60"
             >
               {sending ? "Opening mail..." : "Send Message"}
               <FaPaperPlane className="text-xs transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />

@@ -1,149 +1,100 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaExternalLinkAlt, FaGithub, FaStar } from "react-icons/fa";
+import { FaArrowRight, FaGithub } from "react-icons/fa";
+
+const projects = [
+  {
+    category: "Full-stack ride-sharing platform",
+    title: "Share2Go",
+    description:
+      "A ride-sharing application with secure authentication, driver and passenger flows, ride publishing, booking management, and status-based alerts.",
+    outcome: "Clear booking workflows",
+    tech: ["Java", "Spring Boot", "React", "MySQL", "REST APIs"],
+    github: "https://github.com/Laxmankale/share2ride_Ride_Sharing_App",
+  },
+  {
+    category: "Inventory and sales workflow",
+    title: "Sweet Shop Management",
+    description:
+      "A product and stock management system for searching, purchasing, and maintaining inventory with a reliable API layer behind it.",
+    outcome: "Practical stock visibility",
+    tech: ["Spring Boot", "React", "MySQL", "JUnit", "Mockito"],
+    github: "https://github.com/Laxmankale/sweet-shop-management-system",
+  },
+  {
+    category: "Personal digital presence",
+    title: "Portfolio Website",
+    description:
+      "A responsive portfolio that brings projects and experience together through clear hierarchy, calm visual detail, and deliberate interactions.",
+    outcome: "A clearer first impression",
+    tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+    github: "https://github.com/Laxmankale/portfolio",
+  },
+];
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Share2Go - Ride-Sharing Web App",
-      description:
-        "Full-stack ride-sharing platform with Driver and Passenger roles, secure authentication, ride publishing, booking management, and status-based alerts.",
-      detail:
-        "Built with layered Spring Boot APIs, JPA/Hibernate, MySQL, React Context API, Axios, and a responsive Tailwind interface.",
-      tech: ["Java", "Spring Boot", "React.js", "Tailwind CSS", "MySQL", "REST APIs"],
-      github: "https://github.com/Laxmankale/share2ride_Ride_Sharing_App",
-      live: "#",
-      featured: true,
-    },
-    {
-      title: "Sweet Shop Management System",
-      description:
-        "Inventory and sales platform for searching, viewing, and purchasing sweets with product management and stock tracking workflows.",
-      detail:
-        "Implemented REST APIs with Spring Boot, DTO mapping, layered architecture, JUnit/Mockito tests, Postman validation, and React integration.",
-      tech: ["Spring Boot", "React.js", "Tailwind CSS", "MySQL", "JUnit", "Mockito"],
-      github: "https://github.com/Laxmankale/sweet-shop-management-system",
-      live: "#",
-      featured: false,
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "Personal portfolio built with React, Vite, Tailwind CSS, and Framer Motion to present projects, skills, education, and contact details.",
-      detail:
-        "Designed with reusable components, optimized asset loading, responsive sections, and polished interaction states.",
-      tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
-      github: "https://github.com/Laxmankale/portfolio",
-      live: "#",
-      featured: false,
-    },
-  ];
-
-  const cardGradients = [
-    "from-blue-600 via-cyan-500 to-blue-700",
-    "from-emerald-600 via-teal-500 to-emerald-700",
-    "from-amber-500 via-orange-500 to-amber-600",
-  ];
-
-  const headerBgs = [
-    "from-blue-600/10 to-cyan-500/5 dark:from-blue-900/30 dark:to-cyan-900/10",
-    "from-emerald-600/10 to-teal-500/5 dark:from-emerald-900/30 dark:to-teal-900/10",
-    "from-amber-500/10 to-orange-500/5 dark:from-amber-900/30 dark:to-orange-900/10",
-  ];
-
-  const numberColors = [
-    "bg-blue-600 shadow-blue-400/40",
-    "bg-emerald-600 shadow-emerald-400/40",
-    "bg-amber-500 shadow-amber-400/40",
-  ];
-
   return (
-    <section id="projects" className="section-wrapper section-muted relative">
-      <div className="orb orb-cyan absolute -right-20 top-40 h-56 w-56" style={{ animationDelay: "0s" }} />
-      <div className="orb orb-emerald absolute left-10 bottom-20 h-40 w-40" style={{ animationDelay: "3s" }} />
-
-      <p className="section-kicker">Projects</p>
+    <section id="projects" className="section-wrapper relative">
+      <p className="section-kicker">Selected work</p>
       <motion.h2
         className="section-heading"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.65 }}
       >
-        Selected work with clear technical outcomes
+        Built to solve real problems, not just to ship.
       </motion.h2>
       <p className="section-subtitle">
-        Project cards emphasize what was built, the engineering decisions involved, and the stack
-        used to deliver each application.
+        A selection of applications that show how I approach systems, implementation, and useful
+        product outcomes.
       </p>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-x-8 md:grid-cols-3">
         {projects.map((project, index) => (
           <motion.article
             key={project.title}
-            className="glass-card group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-100/40 dark:hover:shadow-blue-950/30"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.6 }}
+            className="project-card flex min-h-[25rem] flex-col px-1 py-6"
+            initial={{ opacity: 0, y: 36, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            whileHover={{ y: -10 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ delay: index * 0.1, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className={`h-1.5 w-full bg-gradient-to-r ${cardGradients[index]}`} />
-
-            <div className={`relative border-b border-slate-200/40 bg-gradient-to-br p-5 dark:border-slate-700/30 ${headerBgs[index]}`}>
-              <div className="flex items-start justify-between">
-                <span
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl font-outfit text-sm font-bold text-white shadow-lg ${numberColors[index]}`}
-                >
-                  0{index + 1}
+            <motion.div
+              className="project-scan"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.18 + index * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            />
+            <div className="flex items-start justify-between gap-4">
+              <span className="project-number">0{index + 1}</span>
+              <span className="project-label text-right text-stone-500">{project.category}</span>
+            </div>
+            <h3 className="mt-12 text-3xl font-semibold tracking-[-0.065em] text-stone-950 dark:text-stone-50">
+              {project.title}
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-stone-600 dark:text-stone-400">{project.description}</p>
+            <div className="mt-6 border-l-2 border-lime-300 pl-3">
+              <p className="project-label text-stone-500">Outcome</p>
+              <p className="mt-1 text-sm font-semibold text-stone-900 dark:text-stone-100">{project.outcome}</p>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2">
+              {project.tech.map((tech) => (
+                <span key={tech} className="project-tech text-stone-500 dark:text-stone-400">
+                  {tech}
                 </span>
-                {project.featured && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-200/80 bg-amber-50/80 px-3 py-1 text-xs font-semibold text-amber-700 dark:border-amber-700/50 dark:bg-amber-950/40 dark:text-amber-300">
-                    <FaStar className="text-[10px]" /> Featured
-                  </span>
-                )}
-              </div>
-              <h3 className="mt-4 font-outfit text-xl font-semibold leading-7 text-slate-900 dark:text-white">
-                {project.title}
-              </h3>
+              ))}
             </div>
-
-            <div className="flex flex-1 flex-col p-6">
-              <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">{project.description}</p>
-              <p className="mt-4 text-sm leading-7 text-slate-500 dark:text-slate-400">{project.detail}</p>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-600 backdrop-blur-sm transition-all duration-200 hover:border-blue-200 hover:text-blue-600 dark:border-slate-700/50 dark:bg-slate-800/50 dark:text-slate-300 dark:hover:border-blue-600/50 dark:hover:text-blue-400"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-auto flex gap-5 pt-7 text-sm font-semibold">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-slate-600 transition-all duration-200 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-                >
-                  <FaGithub /> Code
-                </a>
-
-                {project.live !== "#" && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-slate-600 transition-all duration-200 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
-                  >
-                    <FaExternalLinkAlt /> Live
-                  </a>
-                )}
-              </div>
-            </div>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link mt-auto inline-flex items-center gap-2 pt-8"
+            >
+              <FaGithub /> View code <FaArrowRight className="text-xs" />
+            </a>
           </motion.article>
         ))}
       </div>

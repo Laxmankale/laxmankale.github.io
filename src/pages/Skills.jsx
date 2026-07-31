@@ -1,140 +1,81 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaAws,
-  FaCode,
-  FaDatabase,
-  FaDocker,
-  FaGitAlt,
-  FaJava,
-  FaLayerGroup,
-  FaRobot,
-  FaProjectDiagram,
-  FaTools,
-} from "react-icons/fa";
-import { SiApachekafka, SiHibernate, SiMysql, SiPostman, SiSpringboot } from "react-icons/si";
+
+const skillLanes = [
+  {
+    number: "01",
+    label: "Backend systems",
+    items: ["Java", "Spring Boot", "Spring MVC", "Hibernate / JPA", "REST APIs", "Microservices"],
+  },
+  {
+    number: "02",
+    label: "Data and messaging",
+    items: ["MySQL", "PostgreSQL", "SQL", "Apache Kafka", "Event-driven design", "Database modeling"],
+  },
+  {
+    number: "03",
+    label: "Delivery tools",
+    items: ["Docker", "Git and GitHub", "Maven", "Postman", "AWS basics", "Agile delivery"],
+  },
+];
 
 export default function Skills() {
-  const skills = [
-    {
-      category: "Backend",
-      description: "Core Java backend stack for APIs, services, and business workflows.",
-      color: "blue",
-      items: [
-        { name: "Java", icon: <FaJava /> },
-        { name: "Spring Boot", icon: <SiSpringboot /> },
-        { name: "Spring MVC", icon: <SiSpringboot /> },
-        { name: "Hibernate/JPA", icon: <SiHibernate /> },
-        { name: "REST APIs", icon: <FaProjectDiagram /> },
-        { name: "Microservices", icon: <FaLayerGroup /> },
-      ],
-    },
-    {
-      category: "Data & Messaging",
-      description: "Database design and asynchronous communication for distributed systems.",
-      color: "emerald",
-      items: [
-        { name: "MySQL", icon: <SiMysql /> },
-        { name: "PostgreSQL", icon: <FaDatabase /> },
-        { name: "SQL Queries", icon: <FaDatabase /> },
-        { name: "JPA Relationships", icon: <SiHibernate /> },
-        { name: "Apache Kafka", icon: <SiApachekafka /> },
-        { name: "Event-Driven Design", icon: <FaProjectDiagram /> },
-      ],
-    },
-    {
-      category: "AI & API Integration",
-      description: "Using AI tools and external APIs to improve backend development workflows.",
-      color: "amber",
-      items: [
-        { name: "AI API Integration", icon: <FaRobot /> },
-        { name: "Prompt Engineering", icon: <FaRobot /> },
-        { name: "AI-Assisted Debugging", icon: <FaTools /> },
-        { name: "API Contract Design", icon: <FaProjectDiagram /> },
-        { name: "DTO Pattern", icon: <FaLayerGroup /> },
-        { name: "React API Integration", icon: <FaCode /> },
-      ],
-    },
-    {
-      category: "Tools & Practices",
-      description: "Development workflow, deployment basics, and professional team practices.",
-      color: "blue",
-      items: [
-        { name: "Docker", icon: <FaDocker /> },
-        { name: "AWS Basics", icon: <FaAws /> },
-        { name: "Git/GitHub", icon: <FaGitAlt /> },
-        { name: "Maven", icon: <FaTools /> },
-        { name: "Postman", icon: <SiPostman /> },
-        { name: "Agile/Scrum", icon: <FaProjectDiagram /> },
-      ],
-    },
-  ];
-
-  const cardAccent = {
-    blue: "from-blue-600 to-cyan-500",
-    emerald: "from-emerald-600 to-teal-500",
-    amber: "from-amber-500 to-orange-500",
-  };
-
-  const iconBg = {
-    blue: "group-hover:bg-blue-100/80 group-hover:text-blue-600 dark:group-hover:bg-blue-900/40 dark:group-hover:text-blue-400",
-    emerald: "group-hover:bg-emerald-100/80 group-hover:text-emerald-600 dark:group-hover:bg-emerald-900/40 dark:group-hover:text-emerald-400",
-    amber: "group-hover:bg-amber-100/80 group-hover:text-amber-600 dark:group-hover:bg-amber-900/40 dark:group-hover:text-amber-400",
-  };
-
-  const iconColor = {
-    blue: "text-blue-600 dark:text-blue-400",
-    emerald: "text-emerald-600 dark:text-emerald-400",
-    amber: "text-amber-600 dark:text-amber-400",
-  };
-
   return (
     <section id="skills" className="section-wrapper relative">
-      <div className="orb orb-cyan absolute right-10 top-32 h-52 w-52" style={{ animationDelay: "0s" }} />
-      <div className="orb orb-blue absolute -left-10 bottom-32 h-44 w-44" style={{ animationDelay: "2s" }} />
-
-      <p className="section-kicker">Skills</p>
+      <p className="section-kicker">Knowledge base</p>
       <motion.h2
         className="section-heading"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.65 }}
       >
-        Focused technical skill set
+        Tools I use to build reliable software.
       </motion.h2>
       <p className="section-subtitle">
-        A compact backend-first overview covering Java services, data systems, AI-assisted API
-        workflows, and delivery tools.
+        The technologies I return to when building clear, maintainable backend systems and practical
+        full-stack experiences.
       </p>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
-        {skills.map((group, i) => (
-          <motion.div
-            key={group.category}
-            className="glass-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-100/30 dark:hover:shadow-blue-950/20"
-            initial={{ opacity: 0, y: 24 }}
+      <div className="mx-auto max-w-6xl border-b border-stone-900 dark:border-stone-100">
+        {skillLanes.map((lane, laneIndex) => (
+          <motion.article
+            key={lane.label}
+            className="skill-lane grid gap-4 border-t border-stone-900 py-5 sm:grid-cols-[10rem_1fr] dark:border-stone-100"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.08, duration: 0.55 }}
+            transition={{ delay: laneIndex * 0.08, duration: 0.55 }}
           >
-            <div className={`h-1.5 w-full bg-gradient-to-r ${cardAccent[group.color]}`} />
-            <div className="p-6">
-              <h3 className="font-outfit text-xl font-semibold text-slate-900 dark:text-white">{group.category}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">{group.description}</p>
-              <div className="mt-5 flex flex-wrap gap-2.5">
-                {group.items.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="group flex items-center gap-2 rounded-lg border border-slate-200/80 bg-white/80 px-3 py-2 text-sm font-medium text-slate-600 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md hover:shadow-blue-100/30 dark:border-slate-700/50 dark:bg-slate-800/50 dark:text-slate-300 dark:hover:border-blue-600/50 dark:hover:shadow-blue-950/20"
-                  >
-                    <span className={`text-base transition-all duration-300 ${iconColor[group.color]}`}>{skill.icon}</span>
-                    {skill.name}
-                  </div>
-                ))}
-              </div>
+            <div className="flex items-baseline gap-3 px-1 sm:block">
+              <span className="font-mono text-xs text-stone-500">{lane.number}</span>
+              <h3 className="mt-0 text-sm font-semibold tracking-[-0.02em] text-stone-900 dark:text-stone-100 sm:mt-3">
+                {lane.label}
+              </h3>
             </div>
-          </motion.div>
+            <div className="skills-grid" aria-label={`${lane.label} skills`}>
+              <motion.span
+                className="skills-spotlight"
+                aria-hidden="true"
+                animate={{ x: ["-120%", "500%"] }}
+                transition={{ delay: laneIndex * 0.7, duration: 5.2, ease: "easeInOut", repeat: Infinity, repeatDelay: 1.4 }}
+              />
+              {lane.items.map((skill, skillIndex) => (
+                <motion.span
+                  key={skill}
+                  className="skill-chip"
+                  initial={{ opacity: 0, y: 12, scale: 0.94 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  whileHover={{ y: -5, scale: 1.04 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: laneIndex * 0.08 + skillIndex * 0.06, duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="skill-chip-dot" />
+                  {skill}
+                </motion.span>
+              ))}
+            </div>
+          </motion.article>
         ))}
       </div>
     </section>

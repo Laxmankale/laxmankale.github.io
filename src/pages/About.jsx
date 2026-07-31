@@ -1,87 +1,80 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaBriefcase, FaCode, FaServer } from "react-icons/fa";
 
-const highlights = [
-  { icon: <FaBriefcase />, label: "Current Role", detail: "Java Developer" },
-  { icon: <FaServer />, label: "Backend Focused", detail: "Java and Spring Boot" },
-  { icon: <FaCode />, label: "API Driven", detail: "REST APIs, Kafka, Docker, and databases" },
+const focusAreas = [
+  {
+    number: "01",
+    title: "Think in systems",
+    detail: "I look beyond a single feature to understand data flow, edge cases, and the people who depend on the result.",
+  },
+  {
+    number: "02",
+    title: "Build for clarity",
+    detail: "Clean APIs, readable code, and useful documentation make software easier to change and safer to maintain.",
+  },
+  {
+    number: "03",
+    title: "Deliver with care",
+    detail: "I use steady feedback loops, testing, and practical collaboration to turn ideas into dependable releases.",
+  },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="section-wrapper section-muted relative">
-      <div className="orb orb-blue absolute -right-20 top-20 h-48 w-48" style={{ animationDelay: "1s" }} />
-      <div className="orb orb-emerald absolute -left-16 bottom-20 h-40 w-40" style={{ animationDelay: "3s" }} />
-
+    <section id="about" className="section-wrapper relative">
       <p className="section-kicker">About</p>
       <motion.h2
         className="section-heading"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.65 }}
       >
-        Java Developer focused on backend engineering
+        Built with clarity at every layer.
       </motion.h2>
       <p className="section-subtitle">
-        I build backend services with a focus on clean API design, reliable data flow, and
-        maintainable application architecture.
+        An approach grounded in reliable engineering, calm communication, and practical decisions that
+        support long-term work.
       </p>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <motion.div
-          className="glass-card overflow-hidden p-0"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.65 }}
         >
-          <div className="h-1.5 w-full accent-gradient" />
-          <div className="p-6 md:p-8">
-            <h3 className="mb-4 font-outfit text-2xl font-bold text-slate-900 dark:text-white">
-              Profile Summary
-            </h3>
-            <div className="space-y-5 text-base leading-8 text-slate-600 dark:text-slate-300">
-              <p>
-                I'm <span className="font-semibold text-slate-900 dark:text-white">Laxman Kale</span>, a Java
-                Developer working on scalable REST APIs, microservices, database integration, and
-                enterprise backend workflows.
-              </p>
-              <p>
-                My core stack includes Java, Spring Boot, Hibernate/JPA, Kafka, Docker, MySQL,
-                PostgreSQL, and React.js for full-stack API integration.
-              </p>
-            </div>
-          </div>
+          <p className="font-mono text-xs uppercase tracking-[0.1em] text-stone-500">Profile</p>
+          <p className="mt-5 max-w-md text-xl leading-9 tracking-[-0.035em] text-stone-800 dark:text-stone-200">
+            Strong engineering starts with understanding how every part of a system fits together, then
+            making each decision easier to reason about.
+          </p>
+          <p className="mt-5 max-w-md text-base leading-8 text-stone-600 dark:text-stone-400">
+            My core stack includes Java, Spring Boot, Hibernate/JPA, Kafka, Docker, MySQL,
+            PostgreSQL, and React for seamless API integration.
+          </p>
         </motion.div>
 
-        <div className="grid gap-4">
-          {highlights.map((h, i) => (
-            <motion.div
-              key={h.label}
-              className="glass-card group flex items-start gap-4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-100/40 dark:hover:shadow-blue-950/20"
-              initial={{ opacity: 0, y: 24 }}
+        <div className="border-t border-stone-900 dark:border-stone-100">
+          {focusAreas.map((area, index) => (
+            <motion.article
+              key={area.title}
+              className="grid gap-4 border-b border-stone-300 py-6 sm:grid-cols-[3rem_1fr] dark:border-stone-700"
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.08, duration: 0.55 }}
             >
-              <span
-                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-lg transition-all duration-300 group-hover:scale-110 ${
-                  i === 0
-                    ? "bg-blue-100/80 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400"
-                    : i === 1
-                      ? "bg-emerald-100/80 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-400"
-                      : "bg-amber-100/80 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400"
-                }`}
-              >
-                {h.icon}
-              </span>
+              <span className="font-mono text-xs text-stone-500">{area.number}</span>
               <div>
-                <h4 className="font-outfit text-lg font-semibold text-slate-900 dark:text-white">{h.label}</h4>
-                <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">{h.detail}</p>
+                <h3 className="text-xl font-semibold tracking-[-0.045em] text-stone-950 dark:text-stone-50">
+                  {area.title}
+                </h3>
+                <p className="mt-2 max-w-xl text-sm leading-7 text-stone-600 dark:text-stone-400">
+                  {area.detail}
+                </p>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>
