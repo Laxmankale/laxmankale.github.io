@@ -437,68 +437,67 @@ body {
   overflow: hidden;
 }
 
-.skills-grid {
+.skills-list-wrap {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  gap: 0.75rem;
-  min-height: 4.8rem;
   overflow: hidden;
   isolation: isolate;
-  padding: 0.25rem 0;
+  padding: 0.55rem 0 0.25rem;
 }
 
-.skills-spotlight {
+.skills-scanline {
   position: absolute;
-  inset: -25% auto -25% 0;
+  left: 0;
+  right: 0;
+  top: 0.1rem;
   z-index: 0;
-  width: 8rem;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(223, 255, 40, 0.55), transparent);
-  filter: blur(14px);
+  height: 1px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 32%, transparent), transparent 82%);
   pointer-events: none;
 }
 
-.skill-chip {
+.skill-cloud {
   position: relative;
   z-index: 1;
-  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+
+.skill-cloud-item {
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
-  padding: 0.6rem 0.85rem;
+  gap: 1.875rem;
+  border-bottom: 1px solid var(--line);
+  padding: 1.125rem 0.25rem;
   color: var(--ink);
+  font-size: clamp(1.35rem, 2.3vw, 2.35rem);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  transition: color 200ms ease, padding 200ms ease;
+}
+
+.skill-cloud-item:hover {
+  padding-left: 1rem;
+  color: #5b6cff;
+}
+
+.skill-cloud-index {
+  min-width: 1.5rem;
+  color: var(--muted);
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  transition: border-color 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
-}
-
-.skill-chip:hover {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: #171715;
-  box-shadow: 0 0.7rem 1.6rem rgba(223, 255, 40, 0.15);
-}
-
-.skill-chip-dot {
-  height: 0.38rem;
-  width: 0.38rem;
-  border-radius: 999px;
-  background: var(--accent);
-}
-
-.skill-chip:hover .skill-chip-dot {
-  background: #171715;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .skills-spotlight {
+  .skills-scanline {
     display: none;
+  }
+
+  .skill-cloud-item {
+    transition: none;
   }
 }
 .experience-timeline {

@@ -53,27 +53,37 @@ export default function Skills() {
                 {lane.label}
               </h3>
             </div>
-            <div className="skills-grid" aria-label={`${lane.label} skills`}>
+            <div className="skills-list-wrap">
               <motion.span
-                className="skills-spotlight"
+                className="skills-scanline"
                 aria-hidden="true"
-                animate={{ x: ["-120%", "500%"] }}
-                transition={{ delay: laneIndex * 0.7, duration: 5.2, ease: "easeInOut", repeat: Infinity, repeatDelay: 1.4 }}
+                initial={{ opacity: 0, scaleX: 0 }}
+                whileInView={{ opacity: [0, 1, 0.45], scaleX: 1 }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: laneIndex * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               />
+              <ul className="skill-cloud" aria-label={`${lane.label} skills`}>
               {lane.items.map((skill, skillIndex) => (
-                <motion.span
+                <motion.li
                   key={skill}
-                  className="skill-chip"
-                  initial={{ opacity: 0, y: 12, scale: 0.94 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  whileHover={{ y: -5, scale: 1.04 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: laneIndex * 0.08 + skillIndex * 0.06, duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                  className="skill-cloud-item"
+                  initial={{ opacity: 0, x: -18 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.45 }}
+                  transition={{
+                    delay: laneIndex * 0.12 + 0.12 + skillIndex * 0.075,
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 21,
+                  }}
                 >
-                  <span className="skill-chip-dot" />
+                  <span className="skill-cloud-index">
+                    {String(skillLanes.slice(0, laneIndex).reduce((count, group) => count + group.items.length, 0) + skillIndex + 1).padStart(2, "0")}
+                  </span>
                   {skill}
-                </motion.span>
+                </motion.li>
               ))}
+              </ul>
             </div>
           </motion.article>
         ))}
